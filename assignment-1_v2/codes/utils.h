@@ -169,23 +169,4 @@ bool converged(mat a, mat prev){
     }
     return true;
 }
- 
-// int main()
-// {
-// 	mat R, Q;
-// 	mat x = matrix_copy(3, in, 5);
-// 	householder(x, &R, &Q);
- 
-// 	puts("Q"); matrix_show(Q);
-// 	puts("R"); matrix_show(R);
- 
-// 	// to show their product is the input matrix
-// 	mat m = matrix_mul(Q, R);
-// 	puts("Q * R"); matrix_show(m);
- 
-// 	matrix_delete(x);
-// 	matrix_delete(R);
-// 	matrix_delete(Q);
-// 	matrix_delete(m);
-// 	return 0;
-// }
+

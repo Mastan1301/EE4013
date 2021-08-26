@@ -1,0 +1,322 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+
+\usepackage{amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+\usetikzlibrary{shapes,arrows}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{EE4013 Assignment-1}
+\author{Shaik Mastan Vali - EE18BTECH11039}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+Download all the codes from 
+\begin{lstlisting}
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes
+\end{lstlisting}
+%
+and latex-tikz codes from 
+%
+\begin{lstlisting}
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2
+\end{lstlisting}
+
+\section{Problem}
+Consider the following matrix:
+\begin{align*}
+    R = \begin{bmatrix}
+        1 & 2 & 4 & 8 \\
+        1 & 3 & 9 & 27 \\
+        1 & 4 & 16 & 64 \\
+        1 & 5 & 25 & 125
+    \end{bmatrix}
+\end{align*}
+Calculate the absolute value of the Eigen values of $R$.
+
+\section{\textbf{Solution-1}}
+We use the following property -
+\begin{align*}
+    \prod_{i = 0}^{k - 1} \lambda_{i} = det(R)
+\end{align*}
+where $\lambda_{i}$ are the Eigen values and $det(.)$ is the determinant operator. \\
+To find the determinant, we use the following recurrence relation.
+\begin{align*}
+    det(R, n) = \sum_{j = 0}^{n - 1} (-1) ^ {j} \times R[0][j] \times det(cof(R, 0, j), n - 1)
+\end{align*}
+where $cof(i, j)$ is the cofactor matrix of the position $(i, j)$ in the matrix R. \\ \\
+
+The recursion, for our example, is given in the flow chart. \\ \\
+
+\begin{figure}[h!]
+	\begin{center}
+		\resizebox{\columnwidth/1}{!}{\input{./figs/fig1.tex}}
+	\end{center}
+	\caption{The flow of recursion}
+	\label{fig:fig1}
+\end{figure}
+
+\\ \\ \\ To understand the process, consider $C_1 = cof(R, 0, 0)$. \\ \\
+
+\begin{figure}[h!]
+	\begin{center}
+		\resizebox{\columnwidth/1}{!}{\input{./figs/fig2.tex}}
+	\end{center}
+	\caption{A $3 \times 3$ sub-problem}
+	\label{fig:fig2}
+\end{figure}
+
+Now, consider $C_2 = cof(C_1, 0, 0)$. 
+
+\begin{figure}[h!]
+	\begin{center}
+		\resizebox{\columnwidth/1}{!}{\input{./figs/fig3.tex}}
+	\end{center}
+	\caption{A $2 \times 2$ sub-problem}
+	\label{fig:fig3}
+\end{figure}
+
+The determinant of a $1 \times 1$ matrix is the value of the element itself. We use this property as the base case.
+
+The absolute value of the determinant of the given matrix is 12. Hence, the answer is 12.
+
+The algorithm is in the following file - 
+\begin{lstlisting}
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes/sol-1.c
+\end{lstlisting}
+
+\section{Complexity of the algorithm}
+At each stage of recursion, there are $O(n)$ recursive calls. In each of these function calls, we compute the co-factor matrix in $O(n ^ 2)$ time. So, the total time complexity is $O(n ^ 3)$.
+
+\section{\textbf{Solution-2}}
+In this solution, we use the QR-algorithm to compute the Eigen values. The algorithm is as follows-
+\begin{itemize}
+    \item Apply the QR decomposition so that
+            \begin{align*}
+                X = Q_0R_0
+            \end{align*}
+            where $Q_0$ is an orthogonal matrix and $R_0$ is an upper-triangular matrix.
+    \item Compute 
+          \begin{align*}
+                E_0 = Q_0^{-1} X Q_0 = Q_0 ^ T X Q_0
+            \end{align*} 
+            Note that the Eigen values of $X$ and $E_0$ are the same.
+    \item Next, we decompose the $E_0$ and repeat this procedure till we obtain a triangular matrix. The Eigen values of a triangular matrix are given by the diagonal entries of the matrix.
+\end{itemize}
+
+\\
+We compute the QR decomposition using the Householder transformation.
+Multiplying a given vector $a$, for example the first column of matrix $A$, with the Householder matrix $H$, which is given as
+\begin{align*}
+    H=I-\frac{2}{u^{T} u} u u^{T}
+\end{align*}
+
+reflects $a$ about a plane given by its normal vector $u$. When the normal vector of the plane $u$ is given as
+\begin{align*}
+    u=a-\|a\|_{2} e_{1}
+\end{align*}
+then the transformation reflects $a$ onto the first standard basis vector
+\begin{align*}
+        e_{1}=\left[\begin{array}{llll}
+        1 & 0 & 0 & \ldots
+    \end{array}\right]^{T}
+\end{align*}
+which means that all entries but the first become zero. To avoid numerical cancellation errors, we should take the opposite sign of $a_{1}$ :
+\begin{align*}
+    u=a+\operatorname{sign}\left(a_{1}\right)\|a\|_{2} e_{1}
+\end{align*}
+and normalize with respect to the first element:
+\begin{align*}
+   v=\frac{u}{u_{1}} 
+\end{align*}
+The equation for $H$ thus becomes:
+\begin{align*}
+    H=I-\frac{2}{v^{T} v} v v^{T}
+\end{align*}
+or, in another form
+\begin{align*}
+    H=I-\beta v v^{T}
+\end{align*}
+with
+\begin{align*}
+    \beta=\frac{2}{v^{T} v}
+\end{align*}
+Applying $H$ on $a$ then gives
+\begin{align*}
+    H a=-\operatorname{sign}\left(a_{1}\right)\|a\|_{2} e_{1}
+\end{align*}
+and applying $H$ on the matrix $A$ zeroes all subdiagonal elements of the first column:
+$$
+H_{1} A=\left(\begin{array}{ccc}
+r_{11} & r_{12} & r_{13} \\
+0 & * & * \\
+0 & * & *
+\end{array}\right)
+$$
+(denoted *), not on the whole second column of $A$.
+To get $H_{2}$, we then embed the new $H$ into an $m \times n$ identity:
+$$
+H_{2}=\left(\begin{array}{lll}
+1 & 0 & 0 \\
+0 & H & \\
+0 & &
+\end{array}\right)
+$$
+This is how we can, column by column, remove all subdiagonal elements of $A$ and thus transform it into $R$.
+$H_{n} \ldots H_{3} H_{2} H_{1} A=R$
+The product of all the Householder matrices $H$, for every column, in reverse order, will then yield the orthogonal matrix $Q$.
+$$
+H_{1} H_{2} H_{3} \ldots H_{n}=Q
+$$
+
+\begin{figure}[h!]
+	\begin{center}
+		\resizebox{\columnwidth/1}{!}{\input{./figs/fig4.tex}}
+	\end{center}
+	\caption{The QR algorithm}
+	\label{fig:fig4}
+\end{figure}
+
+Using this algorithm, the obtained Eigen values are 139.410, 5.003. 0.555, 0.0311. The absolute value of the product is 12. 
+
+The algorithm is in the following file- 
+\begin{lstlisting}
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes/sol-2.c
+\end{lstlisting}
+The utility functions are in the following header file- 
+\begin{lstlisting}
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes/utils.h
+\end{lstlisting}
+\\ ~ \\
+Compile the code using-
+\begin{lstlisting}
+gcc sol-2.c -o sol-2 -lm
+\end{lstlisting}
+Run the code using-
+\begin{lstlisting}
+./sol-2
+\end{lstlisting}
+
+\section{Complexity of the QR algorithm}
+The QR decomposition step takes $O(n ^ 3)$ computations. The matrix convergence is achieved in $O(|\lambda_i / \lambda_j|)$ steps. Hence the total time complexity is $O(|\lambda_i / \lambda_j| \times n ^ 3)$.
+\end{document}
+
