@@ -1,0 +1,111 @@
+\begin{frame}{Solution-2}
+    \section{Solution-2}
+    In this solution, we use the QR-algorithm to compute the Eigen values. The algorithm is as follows-
+    \begin{itemize}
+        \item Apply the QR decomposition so that
+                \begin{align*}
+                    X = Q_0R_0
+                \end{align*}
+                where $Q_0$ is an orthogonal matrix and $R_0$ is an upper-triangular matrix.
+        \item Compute 
+              \begin{align*}
+                    E_0 = Q_0^{-1} X Q_0 = Q_0 ^ T X Q_0
+                \end{align*} 
+                Note that the Eigen values of $X$ and $E_0$ are the same.
+        \item Next, we decompose the $E_0$ and repeat this procedure till we obtain a triangular matrix. The Eigen values of a triangular matrix are given by the diagonal entries of the matrix.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Householder Transformation}
+    The reflection hyperplane can be defined by a unit vector $u$ that is orthogonal to the hyperplane, which is its normal vector. The reflection of a vector $x$ about this hyperplane is the linear transformation:
+    \begin{align*}
+        y &= x - 2 (u^T x) u \\
+        &= x - 2 u (u ^T x) \\
+        &= x - 2 (u u ^T) x \\
+        &= (I - 2 u u^T) x
+    \end{align*}
+    The matrix constructed from this transformation can be expressed in terms of an outer product as:
+    \begin{align*}
+        H = H=I-2 u u^{T}
+    \end{align*}
+    is called as the \textbf{Householder matrix}.
+\end{frame}
+
+\begin{frame}{QR decomposition}
+    We compute the QR decomposition using the Householder transformation.
+    Multiplying a given vector $x$, for example the first column of matrix $X$, with the Householder matrix $H$, which is given as
+    \begin{align*}
+        H=I-\frac{2}{u^{T} u} u u^{T}
+    \end{align*}
+    
+    reflects $x$ about a plane given by its normal vector $u$. When the normal vector of the plane $u$ is given as
+    \begin{align*}
+        u=x-\|x\|_{2} e_{1}
+    \end{align*}
+    then the transformation reflects $x$ onto the first standard basis vector
+    \begin{align*}
+            e_{1}=\left[\begin{array}{llll}
+            1 & 0 & 0 & \ldots
+        \end{array}\right]^{T}
+    \end{align*}
+    which means that all entries but the first become zero.
+\end{frame}
+
+\begin{frame}{Algorithm}
+    In general, if we take $u=x-s\|x\| e_{1}$ where $s=\pm 1$ and $v=u /\|u\|$ then
+    $$
+    H x=\left(I-2 \frac{u u^{T}}{u^{T} u}\right) x=s\|x\| e_{1} .
+    $$
+    Let us first verify that this works:
+    \begin{align*}
+    u^{T} x &=\left(x-s\|x\| e_{1}\right)^{T} x \\
+    &=\|x\|^{2}-s x_{1}\|x\| \\
+    u^{T} u &=\left(x-s\|x\| e_{1}\right)^{T}\left(x-s\|x\| e_{1}\right) \\
+    &=\|x\|^{2}-2 s x_{1}\|x\|+\|x\|^{2}\left\|e_{1}\right\|^{2} \\
+    &=2\left(\|x\|^{2}-s x_{1}\|x\|\right)=2 u^{T} x \\
+    H x &=x-2 u \frac{u^{T} x}{u^{T} u}=x-u=s\|x\| e_{1} .
+    \end{align*}
+\end{frame}
+
+\begin{frame}{Algorithm}
+    As a byproduct of this calculation, note that we have
+    $$
+    u^{T} u=-2 s\|x\| u_{1} = -2 s\|x\| (x_1 - s\|x\|)
+    $$
+    Hence, to avoid numerical cancellation errors, we take $s = -sign(x_1)$.\\
+    $$\implies Hx = -sign(x_1) \|x\| e_1$$
+    First, we multiply $X$ with the Householder matrix $H_{1}$ we obtain when we choose the first matrix column for $X$. This results in a matrix $H_{1} X$ with zeros in the left column (except for the first row).
+\end{frame}
+
+\begin{frame}{Algorithm}
+    $$
+    H_{1} X=\left[\begin{array}{cccc}
+    -sign(X_{11})\alpha_{1} & \star & \cdots & \star \\
+    0 & & & \\
+    \vdots & & X^{\prime} & \\
+    0 & & &
+    \end{array}\right]
+    $$
+    where $\alpha_1$ is the 2-norm of the first column of $X$.\\
+    This can be repeated for $X^{\prime}$ (obtained from $H_{1} X$ by deleting the first row and first column), resulting in a Householder matrix $H_{2}^{\prime} .$ Note that $H_{2}^{\prime}$ is smaller than $H_{1}$. Since we want it really to operate on $H_{1} X$ instead of $X^{\prime}$ we need to expand it to the upper left, filling in a 1 , or in general:
+    $$
+    H_{k}=\left[\begin{array}{cc}
+    I_{k-1} & 0 \\
+    0 & H_{k}^{\prime}
+    \end{array}\right]
+    $$
+\end{frame}
+
+\begin{frame}{Algorithm}
+This is how we can, column by column, remove all sub-diagonal elements of $A$ and thus transform it into $R$.
+$$H_{n} \ldots H_{3} H_{2} H_{1} X=R$$
+The product of all the Householder matrices $H$, for every column, in reverse order, will then yield the orthogonal matrix $Q$.
+$$
+H_{1} H_{2} H_{3} \ldots H_{n}=Q
+$$
+\end{frame}
+
+\begin{frame}{Complexity of the algorithm}
+    The QR decomposition step takes $O(n ^ 3)$ computations, because the number of multiplications at each iteration is $O(n^2)$, and there are $O(n)$ iterations. \\
+    The matrix convergence is achieved in $O(\max_{i, j} |\lambda_i / \lambda_j| ^ n)$ steps. Hence the total time complexity is $O((\max_{i, j} |\lambda_i / \lambda_j| ^ n) \times n ^ 3)$.
+\end{frame}

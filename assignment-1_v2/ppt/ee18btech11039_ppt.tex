@@ -1,0 +1,55 @@
+\documentclass{beamer}
+\usepackage{tkz-euclide}
+\usetikzlibrary{shapes,arrows}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\UseRawInputEncoding
+
+% Cannot enable in Xelatex
+\usepackage{pgfpages}
+% \setbeameroption{hide notes} % Only slides
+% \setbeameroption{show only notes} % Only notes
+% \setbeameroption{show notes on second screen}
+
+% other packages
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{graphicx,listings,stackengine}
+
+%% Enable only in Xelatex
+% \usepackage{pstricks}
+
+\author{Shaik Mastan Vali \\ EE18BTECH11039}
+\title{EE4013 Assignment - 1}
+\institute[]{IIT Hyderabad}
+\usepackage{QUT}
+
+% defs
+\def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.55}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{deepblue},
+    emphstyle=\ttfamily\color{deepred},    % Custom highlighting style
+    stringstyle=\color{deepgreen},
+    numbers=left,
+    numberstyle=\small\color{halfgray},
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    frame=shadowbox,
+}
+
+
+\begin{document}
+\maketitle
+\begin{frame}{Contents}
+    \tableofcontents
+\end{frame}
+
+\input{sol-1.tex}
+\input{sol-2.tex}
+
+\end{document}

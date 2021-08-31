@@ -1,0 +1,55 @@
+\begin{frame}{Problem}
+    \section{Problem}
+    Consider the following matrix:
+    \begin{align*}
+        X = \begin{bmatrix}
+            1 & 2 & 4 & 8 \\
+            1 & 3 & 9 & 27 \\
+            1 & 4 & 16 & 64 \\
+            1 & 5 & 25 & 125
+        \end{bmatrix}
+    \end{align*}
+    Calculate the absolute value of the product of the Eigen values of $X$.
+
+\end{frame}
+
+\section{Solution-1}
+\begin{frame}{Solution-1}
+    We use the following property -
+    \begin{align*}
+        \prod_{i = 0}^{k - 1} \lambda_{i} = det(X)
+    \end{align*}
+    where $\lambda_{i}$ are the Eigen values and $det(.)$ is the determinant operator. \\
+    To find the determinant, we use the following recurrence relation.
+    \begin{align*}
+        det(X, n) = \sum_{j = 0}^{n - 1} (-1) ^ {j} \times X[0][j] \times det(cof(X, 0, j), n - 1)
+    \end{align*}
+    where $cof(i, j)$ is the cofactor matrix of the position $(i, j)$ in the matrix $X$.
+\end{frame}
+
+\begin{frame}{Flow of the recursion}
+    \begin{figure}[h!]
+	\begin{center}
+		\resizebox{\columnwidth/1}{!}{\input{./figs/fig1.tex}}
+	\end{center}
+	\caption{The flow of recursion}
+	\label{fig:fig1}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Sub-problems}
+    \begin{figure}[h]
+    		\resizebox{\columnwidth/2}{!}{\input{./figs/fig2.tex}}
+    	\caption{A $3 \times 3$ sub-problem}
+    	\label{fig:fig2}
+    \end{figure}
+    \begin{figure}[h]
+    		\resizebox{\columnwidth/2}{!}{\input{./figs/fig3.tex}}
+    	\caption{A $2 \times 2$ sub-problem}
+    	\label{fig:fig3}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Complexity}
+    At each stage of recursion, there are $O(n)$ recursive calls. In each of these function calls, we compute the co-factor matrix in $O(n ^ 2)$ time. So, the total time complexity is $O(n ^ 3)$.
+\end{frame}
