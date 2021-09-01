@@ -206,7 +206,10 @@ https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes/sol-1.c
 \end{lstlisting}
 
 \subsection{Complexity of the algorithm}
-At each stage of recursion, there are $O(n)$ recursive calls. In each of these function calls, we compute the co-factor matrix in $O(n ^ 2)$ time. So, the total time complexity is $O(n ^ 3)$.
+At each stage of recursion of depth $k$, there are $O(n - k)$ recursive calls. Hence, the time complexity is 
+    \begin{align*}
+        O(n \times (n - 1) \times .... \times 1) = O(n!)
+    \end{align*}
 
 \section{\textbf{Solution-2}}
 In this solution, we use the QR-algorithm to compute the Eigen values. The algorithm is as follows-
@@ -331,7 +334,7 @@ Run the code using-
 \end{lstlisting}
 
 \subsection{Complexity of the QR algorithm}
-The QR decomposition step takes $O(n ^ 3)$ computations, because the number of multiplications at each iteration is $O(n^2)$, and there are $O(n)$ iterations. \\
-    The matrix convergence is achieved in $O(\max_{i, j} |\lambda_i / \lambda_j| ^ n)$ steps. Hence the total time complexity is $O((\max_{i, j} |\lambda_i / \lambda_j| ^ n) \times n ^ 3)$.
+The QR decomposition step takes $O(n ^ 4)$ computations, because the matrix multiplication at each iteration takes $O(n^3)$ time, and there are $O(n)$ iterations. \\
+    The matrix convergence is achieved in $O(\max_{i, j} |\lambda_i / \lambda_j| ^ n)$ steps. Hence the total time complexity is $O((\max_{i, j} |\lambda_i / \lambda_j| ^ n) \times n ^ 4)$.
 \end{document}
 
