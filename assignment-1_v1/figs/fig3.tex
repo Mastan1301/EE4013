@@ -1,9 +1,0 @@
-\tikzstyle{rblock} = [rectangle, draw, text width=15em, text centered, inner sep=0pt, minimum height=2em, rounded corners]
-\tikzstyle{line} = [draw, -latex']
-\tikzstyle{arrow} = [thick,->,>=stealth]
-
-\begin{tikzpicture}[node distance = 5em, auto]
-    \node (node5) [rblock] {$det(C_2, 2)$};
-    \node (node6) [rblock, below of = node3] {$C_2[0][0] * det(cof(C_2, 0, 0), 1) - C_2[0][1] * det(cof(C_2, 0, 1), 1)$};
-    \draw [arrow] (node5) -- (node6);
-\end{tikzpicture}
