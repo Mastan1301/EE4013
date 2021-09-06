@@ -28,7 +28,7 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{graphicx}
 \usepackage{tkz-euclide}
-\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc, shapes, shapes.multipart,chains,arrows}
 
 \usetikzlibrary{calc,math}
 \usepackage{listings}
@@ -132,13 +132,13 @@ columns=fullflexible
 \renewcommand{\thetable}{\theenumi}
 Download all the codes from 
 \begin{lstlisting}
-https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1/codes
 \end{lstlisting}
 %
 and latex-tikz codes from 
 %
 \begin{lstlisting}
-https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1
 \end{lstlisting}
 
 \section{Problem}
@@ -202,7 +202,7 @@ The absolute value of the determinant of the given matrix is 12. Hence, the answ
 
 The algorithm is in the following file - 
 \begin{lstlisting}
-https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes/sol-1.c
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1/codes/det/main.c
 \end{lstlisting}
 
 \subsection{Complexity of the algorithm}
@@ -317,24 +317,70 @@ Using this algorithm, the obtained Eigen values are 139.410, 5.003. 0.555, 0.031
 
 The algorithm is in the following file- 
 \begin{lstlisting}
-https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes/sol-2.c
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1/codes/QR_arrays/main.c
 \end{lstlisting}
 The utility functions are in the following header file- 
 \begin{lstlisting}
-https://github.com/Mastan1301/EE4013/tree/main/assignment-1_v2/codes/utils.h
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1/codes/QR_arrays/utils.h
 \end{lstlisting}
 \\ ~ \\
 Compile the code using-
 \begin{lstlisting}
-gcc sol-2.c -o sol-2 -lm
+gcc main.c -o main -lm
 \end{lstlisting}
 Run the code using-
 \begin{lstlisting}
-./sol-2
+./main
 \end{lstlisting}
 
-\subsection{Complexity of the QR algorithm}
+The C++ program (using vectors) is in the following file-
+\begin{lstlisting}
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1/codes/QR_vectors/main.cpp
+\end{lstlisting}
+Compile the code using-
+\begin{lstlisting}
+g++ main.c -o main -lm
+\end{lstlisting}
+Run the code using-
+\begin{lstlisting}
+./main
+\end{lstlisting}
+
+\subsection{Complexity of the QR algorithm using arrays/vectors}
 The QR decomposition step takes $O(n ^ 4)$ computations, because the matrix multiplication at each iteration takes $O(n^3)$ time, and there are $O(n)$ iterations. \\
     The matrix convergence is achieved in $O(\max_{i, j} |\lambda_i / \lambda_j| ^ n)$ steps. Hence the total time complexity is $O((\max_{i, j} |\lambda_i / \lambda_j| ^ n) \times n ^ 4)$.
+    
+\subsection{QR algorithm using linked lists}
+In this algorithm, we use linked lists to store the matrices. The list is defined by a \textit{head} node. The function \textit{at(head, i, j)} returns the pointer to the node at $i^{th}$ row and $j^{th}$ column. 
+
+\begin{figure}[h!]
+	\begin{center}
+		\resizebox{\columnwidth/1}{!}{\input{./figs/fig5.tex}}
+	\end{center}
+	\caption{A $4 \times 4$ matrix implementation using linked list}
+	\label{fig:fig5}
+\end{figure}
+
+
+The code is in the following file-
+\begin{lstlisting}
+https://github.com/Mastan1301/EE4013/tree/main/assignment-1/codes/QR_linked_list/main.c
+\end{lstlisting}
+
+\subsection{Complexity of the QR algorithm using linked lists}   
+To access the element in the $i^{th}$ row and $j^{th}$ column, we need $O(i + j)$ iterations. Hence, the time complexity of accessing an element is $O(n)$. This additional factor in the algorithm gives us $O((\max_{i, j} |\lambda_i / \lambda_j| ^ n) \times n ^ 5)$ complexity. However, using lists gives us better memory management due to non-continuguous memory allocation.
+
+\subsection{Comparison of runtimes of QR algorithm using different data structures}
+\begin{tabular}{| c | c |}
+     \hline
+     \textbf{Data Structure} &  \textbf{Time (in ms.)}\\
+     \hline
+     Arrays & 0.472 \\ 
+     \hline
+     Vectors (in C++) & 0.886 \\
+     \hline
+     Linked lists & 0.925 \\
+     \hline
+\end{tabular}
 \end{document}
 
