@@ -1,18 +1,3 @@
-\begin{frame}{Problem}
-    \section{Problem}
-    Consider the following matrix:
-    \begin{align*}
-        X = \begin{bmatrix}
-            1 & 2 & 4 & 8 \\
-            1 & 3 & 9 & 27 \\
-            1 & 4 & 16 & 64 \\
-            1 & 5 & 25 & 125
-        \end{bmatrix}
-    \end{align*}
-    Calculate the absolute value of the product of the Eigen values of $X$.
-
-\end{frame}
-
 \section{Solution-1}
 \begin{frame}{Solution-1}
     We use the following property -
@@ -51,5 +36,8 @@
 \end{frame}
 
 \begin{frame}{Complexity}
-    At each stage of recursion, there are $O(n)$ recursive calls. In each of these function calls, we compute the co-factor matrix in $O(n ^ 2)$ time. So, the total time complexity is $O(n ^ 3)$.
+    At each stage of recursion of depth $k$, there are $O(n - k)$ recursive calls. Hence, the time complexity is 
+    \begin{align*}
+        O(n \times (n - 1) \times .... \times 1) = O(n!)
+    \end{align*}
 \end{frame}

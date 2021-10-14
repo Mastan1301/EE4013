@@ -1,5 +1,5 @@
-\begin{frame}{Solution-2}
-    \section{Solution-2}
+\begin{frame}{Solution}
+    \section{Solution}
     In this solution, we use the QR-algorithm to compute the Eigen values. The algorithm is as follows-
     \begin{itemize}
         \item Apply the QR decomposition so that
@@ -106,6 +106,42 @@ $$
 \end{frame}
 
 \begin{frame}{Complexity of the algorithm}
-    The QR decomposition step takes $O(n ^ 3)$ computations, because the number of multiplications at each iteration is $O(n^2)$, and there are $O(n)$ iterations. \\
-    The matrix convergence is achieved in $O(\max_{i, j} |\lambda_i / \lambda_j| ^ n)$ steps. Hence the total time complexity is $O((\max_{i, j} |\lambda_i / \lambda_j| ^ n) \times n ^ 3)$.
+    The QR decomposition step takes $O(n ^ 4)$ computations, because the matrix multiplication at each iteration takes $O(n^3)$ time, and there are $O(n)$ iterations. \\
+    The matrix convergence is achieved in $O(\max_{i, j} |\lambda_i / \lambda_j| ^ n)$ steps. Hence the total time complexity is $O((\max_{i, j} |\lambda_i / \lambda_j| ^ n) \times n ^ 4)$.
+\end{frame}
+
+\begin{frame}{QR algorithm using linked lists}
+   \subsection{QR algorithm using linked lists}
+    In this algorithm, we use linked lists to store the matrices. The list is defined by a \textit{head} node. Each node has two pointers, \textit{below} and \textit{next}. The \textit{below} pointer is used in traversing along the row and the \textit{next} pointer is used in traversing along the column. The function \textit{at(head, i, j)} returns the pointer to the node at $i^{th}$ row and $j^{th}$ column.  
+\end{frame}
+
+\begin{frame}{Example}
+    \begin{figure}[h!]
+    	\begin{center}
+    		\resizebox{\columnwidth/2}{!}{\input{./figs/fig5.tex}}
+    	\end{center}
+    	\caption{A $4 \times 4$ matrix implementation using linked list}
+    	\label{fig:fig5}
+    \end{figure}
+\end{frame}
+
+\subsection{Complexity}
+\begin{frame}{Complexity}
+    To access the element in the $i^{th}$ row and $j^{th}$ column, we need $O(i + j)$ iterations. Hence, the time complexity of accessing an element is $O(n)$. This additional factor in the algorithm gives us $O((\max_{i, j} |\lambda_i / \lambda_j| ^ n) \times n ^ 5)$ complexity. However, using lists gives us better memory management due to non-contiguous memory allocation.
+\end{frame}
+
+\subsection{Comparison of runtimes}
+\begin{frame}{Comparison of runtimes}
+    \centering
+    \begin{tabular}{| c | c |}
+         \hline
+         \textbf{Data Structure} &  \textbf{Time (in ms.)}\\
+         \hline
+         Arrays & 0.472 \\ 
+         \hline
+         Vectors (in C++) & 0.886 \\
+         \hline
+         Linked lists & 0.925 \\
+         \hline
+    \end{tabular}
 \end{frame}
